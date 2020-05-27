@@ -36,9 +36,9 @@ namespace Microsoft.AnalysisServices.AdomdClient
 
 		private Stream responseStream;
 
-		private WindowsPrincipal logonWindowsPrincipal;
+		//private WindowsPrincipal logonWindowsPrincipal;
 
-		private WindowsIdentity logonWindowsIdentity;
+		//private WindowsIdentity logonWindowsIdentity;
 
 		private IDisposable spSite;
 
@@ -92,8 +92,8 @@ namespace Microsoft.AnalysisServices.AdomdClient
 				this.databaseId = databaseId;
 				this.applicationName = applicationName;
 				this.specificVersion = specificVersion;
-				this.logonWindowsIdentity = WindowsIdentity.GetCurrent();
-				this.logonWindowsPrincipal = new WindowsPrincipal(WindowsIdentity.GetCurrent());
+				//this.logonWindowsIdentity = WindowsIdentity.GetCurrent();
+				//this.logonWindowsPrincipal = new WindowsPrincipal(WindowsIdentity.GetCurrent());
 				XmlaClient.UlsWriterSetCurrentRequestCategoryToRequestProcessing();
 			}
 			catch (XmlaStreamException e)
@@ -116,12 +116,12 @@ namespace Microsoft.AnalysisServices.AdomdClient
 		{
 			try
 			{
-				this.logonWindowsPrincipal = null;
+				/*this.logonWindowsPrincipal = null;
 				if (this.logonWindowsIdentity != null)
 				{
 					this.logonWindowsIdentity.Dispose();
 					this.logonWindowsIdentity = null;
-				}
+				}*/
 				if (this.spSite != null)
 				{
 					this.spSite.Dispose();
@@ -339,7 +339,7 @@ namespace Microsoft.AnalysisServices.AdomdClient
 				IPrincipal currentPrincipal = Thread.CurrentPrincipal;
 				try
 				{
-					Thread.CurrentPrincipal = this.logonWindowsPrincipal;
+					/*Thread.CurrentPrincipal = this.logonWindowsPrincipal;
 					using (WindowsIdentity current = WindowsIdentity.GetCurrent())
 					{
 						if (this.logonWindowsIdentity.User != current.User)
@@ -349,10 +349,10 @@ namespace Microsoft.AnalysisServices.AdomdClient
 							//	this.GetResponseStreamHelper();
 							//	goto IL_71;
 							//}
-						}
+						}*/
 						this.GetResponseStreamHelper();
-						IL_71:;
-					}
+					/*	IL_71:;
+					}*/
 					if (this.outdatedVersion)
 					{
 						throw new AdomdConnectionException(XmlaSR.Connection_WorkbookIsOutdated);

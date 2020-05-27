@@ -4,7 +4,7 @@ using System.Threading;
 
 namespace Microsoft.AnalysisServices.AdomdClient
 {
-	internal sealed class IdentityResolver : IDisposable
+	/*internal sealed class IdentityResolver : IDisposable
 	{
 		//private WindowsImpersonationContext ctx;
 
@@ -97,5 +97,5 @@ namespace Microsoft.AnalysisServices.AdomdClient
 				WindowsIdentity.GetCurrent().Name
 			});
 		}
-	}
+	}*/
 }

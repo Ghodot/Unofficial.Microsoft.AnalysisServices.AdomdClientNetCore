@@ -61,10 +61,10 @@ namespace Microsoft.AnalysisServices.AdomdClient.Internal.SPClient.Interfaces
 				return false;
 			}
 
-			public WindowsIdentity GetWindowsIdentityFromCurrentPrincipal()
+			/*public WindowsIdentity GetWindowsIdentityFromCurrentPrincipal()
 			{
 				throw new InvalidOperationException();
-			}
+			}*/
 
 			public void Log(TraceLevel tl, string message)
 			{
@@ -158,10 +158,10 @@ namespace Microsoft.AnalysisServices.AdomdClient.Internal.SPClient.Interfaces
 				return this.staticProxy.IsRunningInFarm(majorVersion);
 			}
 
-			public WindowsIdentity GetWindowsIdentityFromCurrentPrincipal()
+			/*public WindowsIdentity GetWindowsIdentityFromCurrentPrincipal()
 			{
 				return this.staticProxy.GetWindowsIdentityFromCurrentPrincipal();
-			}
+			}*/
 
 			public void TraceError(string message, params object[] args)
 			{

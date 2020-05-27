@@ -2846,7 +2846,7 @@ namespace Microsoft.AnalysisServices.AdomdClient
 					}
 					else
 					{
-						using (IdentityResolver.Resolve(connectionInfo))
+						/*using (IdentityResolver.Resolve(connectionInfo))
 						{
 							connectionInfo.ResolveLinkFileDataSource();
 							if (connectionInfo.UseEU)
@@ -2857,7 +2857,7 @@ namespace Microsoft.AnalysisServices.AdomdClient
 								}
 								connectionInfo.TryAddEffectiveUserName();
 							}
-						}
+						}*/
 						this.OpenConnection(connectionInfo, out flag2);
 					}
 					ConnectionInfo connectionInfo2 = this.connInfo;
@@ -2932,8 +2932,8 @@ namespace Microsoft.AnalysisServices.AdomdClient
 		{
 			//WindowsImpersonationContext windowsImpersonationContext = null;
 			isSessionTokenNeeded = false;
-			using (IdentityResolver.Resolve(connectionInfo))
-			{
+			/*using (IdentityResolver.Resolve(connectionInfo))
+			{*/
 				try
 				{
 					if (connectionInfo.RevertToProcessAccountForConnection)
@@ -3021,7 +3021,7 @@ namespace Microsoft.AnalysisServices.AdomdClient
 					//	windowsImpersonationContext = null;
 					//}
 				}
-			}
+			/*}*/
 		}
 
 		private bool IsCompressionDesired(ConnectionInfo connectionInfo)

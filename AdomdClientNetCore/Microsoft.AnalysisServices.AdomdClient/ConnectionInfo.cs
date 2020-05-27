@@ -1225,7 +1225,7 @@ namespace Microsoft.AnalysisServices.AdomdClient
 			}
 		}
 
-		internal static void ValidateSpecifiedEffectiveUserName(string effectiveUserName)
+		/*internal static void ValidateSpecifiedEffectiveUserName(string effectiveUserName)
 		{
 			SecurityIdentifier user = WindowsIdentity.GetCurrent().User;
 			NTAccount nTAccount = new NTAccount(effectiveUserName);
@@ -1234,7 +1234,7 @@ namespace Microsoft.AnalysisServices.AdomdClient
 			{
 				throw new AdomdConnectionException(XmlaSR.ConnectionString_LinkFileDupEffectiveUsername);
 			}
-		}
+		}*/
 
 		private static void CopyConnectionInfo(ConnectionInfo sourceInfo, ConnectionInfo destinationInfo)
 		{
@@ -1686,7 +1686,7 @@ namespace Microsoft.AnalysisServices.AdomdClient
 			}
 		}
 
-		internal void TryAddEffectiveUserName()
+		/*internal void TryAddEffectiveUserName()
 		{
 			if (this.AllowDelegation && this.ConnectionType != ConnectionType.Wcf)
 			{
@@ -1699,7 +1699,7 @@ namespace Microsoft.AnalysisServices.AdomdClient
 				ConnectionInfo.ValidateSpecifiedEffectiveUserName(this.ExtendedProperties["EffectiveUserName"].ToString());
 				this.revertToProcessAccountForConnection = true;
 			}
-		}
+		}*/
 
 		private void XmlWarningValidationCallback(object sender, ValidationEventArgs args)
 		{

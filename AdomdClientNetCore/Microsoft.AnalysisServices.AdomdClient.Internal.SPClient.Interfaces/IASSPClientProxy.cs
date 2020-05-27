@@ -43,8 +43,8 @@ namespace Microsoft.AnalysisServices.AdomdClient.Internal.SPClient.Interfaces
 		[ComVisible(false)]
 		bool IsRunningInFarm(int majorVersion);
 
-		[ComVisible(false)]
-		WindowsIdentity GetWindowsIdentityFromCurrentPrincipal();
+		//[ComVisible(false)]
+		//WindowsIdentity GetWindowsIdentityFromCurrentPrincipal();
 
 		[ComVisible(false)]
 		void TraceError(string message, params object[] args);

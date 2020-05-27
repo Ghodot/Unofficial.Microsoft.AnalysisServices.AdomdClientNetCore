@@ -116,7 +116,7 @@ namespace Microsoft.AnalysisServices.AdomdClient
 
 		private bool outdatedVersion;
 
-		private WindowsIdentity logonWindowsIdentity;
+		//private WindowsIdentity logonWindowsIdentity;
 
 		private string connectionSecureGroupName;
 
@@ -300,12 +300,12 @@ namespace Microsoft.AnalysisServices.AdomdClient
 					}
 					this.authorizationHeader = "MsoID " + MsoIDAuthenticationProvider.Instance.Authenticate(connectionInfo.UserID, connectionInfo.Password);
 				}
-				else if (connectionInfo.UserID == null)
+				/*else if (connectionInfo.UserID == null)
 				{
 					this.logonWindowsIdentity = WindowsIdentity.GetCurrent();
 					this.credentials = CredentialCache.DefaultCredentials;
 					this.connectionSecureGroupName = this.logonWindowsIdentity.User.ToString();
-				}
+				}*/
 				else
 				{
 					this.credentials = new NetworkCredential(connectionInfo.UserID, connectionInfo.Password);
@@ -373,12 +373,12 @@ namespace Microsoft.AnalysisServices.AdomdClient
 					this.httpResponseStream.Close();
 					this.httpResponseStream = null;
 				}
-				if (this.logonWindowsIdentity != null)
+				/*if (this.logonWindowsIdentity != null)
 				{
 					this.logonWindowsIdentity.Dispose();
 					this.logonWindowsIdentity = null;
 					this.connectionSecureGroupName = null;
-				}
+				}*/
 				this.disposed = true;
 			}
 			finally
@@ -587,7 +587,7 @@ namespace Microsoft.AnalysisServices.AdomdClient
 			{
 				try
 				{
-					if (this.logonWindowsIdentity != null)
+					/*if (this.logonWindowsIdentity != null)
 					{
 						using (WindowsIdentity current = WindowsIdentity.GetCurrent())
 						{
@@ -603,7 +603,7 @@ namespace Microsoft.AnalysisServices.AdomdClient
 							IL_88:
 							goto IL_AA;
 						}
-					}
+					}*/
 					this.httpResponse = (HttpWebResponse)this.httpRequest.GetResponse();
 					IL_AA:
 					int statusCode = (int)this.httpResponse.StatusCode;
