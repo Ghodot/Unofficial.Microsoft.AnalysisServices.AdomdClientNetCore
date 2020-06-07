@@ -308,10 +308,20 @@ namespace Microsoft.AnalysisServices.AdomdClient
 				}*/
 				else
 				{
-					this.credentials = new NetworkCredential(connectionInfo.UserID, connectionInfo.Password);
-					SHA1Managed sHA1Managed = new SHA1Managed();
-					byte[] bytes = sHA1Managed.ComputeHash(Encoding.UTF8.GetBytes(connectionInfo.Password));
-					this.connectionSecureGroupName = connectionInfo.UserID.Replace(";", ";;") + ";:" + Encoding.Default.GetString(bytes).Replace(";", ";;");
+					if (System.Runtime.InteropServices.RuntimeInformation.IsOSPlatform(
+						System.Runtime.InteropServices.OSPlatform.Windows))
+					{
+						this.credentials = new NetworkCredential(connectionInfo.UserID, connectionInfo.Password);
+						SHA1Managed sHA1Managed = new SHA1Managed();
+						byte[] bytes = sHA1Managed.ComputeHash(Encoding.UTF8.GetBytes(connectionInfo.Password));
+						this.connectionSecureGroupName = connectionInfo.UserID.Replace(";", ";;") + ";:" + Encoding.Default.GetString(bytes).Replace(";", ";;");
+					}
+					else
+					{
+						string username = connectionInfo.UserID;
+						string password = connectionInfo.Password;
+						this.authorizationHeader = "Basic " + Convert.ToBase64String(Encoding.GetEncoding("ISO-8859-1").GetBytes(username + ":" + password));
+					}
 				}
 				if (!string.IsNullOrEmpty(connectionInfo.ClientCertificateThumbprint))
 				{
